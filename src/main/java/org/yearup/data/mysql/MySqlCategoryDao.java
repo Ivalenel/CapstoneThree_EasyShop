@@ -4,18 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
+import org.yearup.models.Product;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public abstract class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
+public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
 
     @Autowired
     public MySqlCategoryDao(DataSource dataSource) {
         super(dataSource);
+    }
+
+    @Override
+    public void updateCategory(int categoryId, Category category) {
+
+    }
+
+    @Override
+    public void deleteCategory(int categoryId) {
+
     }
 
     @Override
@@ -93,16 +105,6 @@ public abstract class MySqlCategoryDao extends MySqlDaoBase implements CategoryD
     }
 
     @Override
-    public void updateCategory(int categoryId, Category category) {
-
-    }
-
-    @Override
-    public void deleteCategory(int categoryId) {
-
-    }
-
-    @Override
     public void update(int categoryId, Category category) {
         String query = "UPDATE categories SET name = ?, description = ? WHERE category_id = ?";
         try (Connection connection = this.getConnection();
@@ -118,6 +120,16 @@ public abstract class MySqlCategoryDao extends MySqlDaoBase implements CategoryD
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<Product> search(Integer categoryId, BigDecimal minPrice, BigDecimal maxPrice, String color, String name) {
+        return null;
+    }
+
+    @Override
+    public List<Product> search(Integer categoryId, BigDecimal minPrice, BigDecimal maxPrice, String color) {
+        return null;
     }
 
     @Override

@@ -44,6 +44,11 @@ public class MySqlUserDao extends MySqlDaoBase implements UserDao
     }
 
     @Override
+    public List<Product> search(Integer categoryId, BigDecimal minPrice, BigDecimal maxPrice, String color) {
+        return null;
+    }
+
+    @Override
     public void delete(int categoryId) {
 
     }

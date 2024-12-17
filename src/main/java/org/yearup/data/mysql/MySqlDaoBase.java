@@ -31,5 +31,7 @@ public abstract class MySqlDaoBase
 
     public abstract List<Product> search(Integer categoryId, BigDecimal minPrice, BigDecimal maxPrice, String color, String name);
 
+    public abstract List<Product> search(Integer categoryId, BigDecimal minPrice, BigDecimal maxPrice, String color);
+
     public abstract void delete(int categoryId);
 }
