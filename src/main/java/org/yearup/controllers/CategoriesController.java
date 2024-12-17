@@ -1,8 +1,8 @@
 package org.yearup.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.yearup.data.CategoryDao;
 import org.yearup.data.ProductDao;
 import org.yearup.models.Category;
@@ -10,63 +10,61 @@ import org.yearup.models.Product;
 
 import java.util.List;
 
-// Make this a REST controller
-@RestController
-@RequestMapping("/categories")
-@CrossOrigin("*")
+// add the annotations to make this a REST controller
+// add the annotation to make this controller the endpoint for the following url
+    // http://localhost:8080/categories
+// add annotation to allow cross site origin requests
 public class CategoriesController
 {
-    private final CategoryDao categoryDao;
-    private final ProductDao productDao;
+    private CategoryDao categoryDao;
+    private ProductDao productDao;
 
-    @Autowired
-    public CategoriesController(CategoryDao categoryDao, ProductDao productDao)
+
+    // create an Autowired controller to inject the categoryDao and ProductDao
+
+    // add the appropriate annotation for a get action
+    public List<Category> getAll()
     {
-        this.categoryDao = categoryDao;
-        this.productDao = productDao;
+        // find and return all categories
+        return null;
     }
 
-    // GET: Retrieve all categories
-    @GetMapping
-    public List<Category> getAllCategories()
+    // add the appropriate annotation for a get action
+    public Category getById(@PathVariable int id)
     {
-        return categoryDao.getAllCategories();
+        // get the category by id
+        return null;
     }
 
-    // GET: Retrieve a single category by ID
-    @GetMapping("{id}")
-    public Category getCategoryById(@PathVariable int id)
-    {
-        return categoryDao.getCategoryById(id);
-    }
-
-    // GET: Retrieve all products in a specific category
+    // the url to return all products in category 1 would look like this
+    // https://localhost:8080/categories/1/products
     @GetMapping("{categoryId}/products")
-    public List<Product> getProductsByCategory(@PathVariable int categoryId)
+    public List<Product> getProductsById(@PathVariable int categoryId)
     {
-        return productDao.getProductsByCategoryId(categoryId);
+        // get a list of product by categoryId
+        return null;
     }
 
-    // POST: Add a new category
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    // add annotation to call this method for a POST action
+    // add annotation to ensure that only an ADMIN can call this function
     public Category addCategory(@RequestBody Category category)
     {
-        return categoryDao.addCategory(category);
+        // insert the category
+        return null;
     }
 
-    // PUT: Update an existing category by ID
-    @PutMapping("{id}")
+    // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
+    // add annotation to ensure that only an ADMIN can call this function
     public void updateCategory(@PathVariable int id, @RequestBody Category category)
     {
-        category.setCategoryId(id);
-        categoryDao.updateCategory(category);
+        // update the category by id
     }
 
-    // DELETE: Remove a category by ID
-    @DeleteMapping("{id}")
+
+    // add annotation to call this method for a DELETE action - the url path must include the categoryId
+    // add annotation to ensure that only an ADMIN can call this function
     public void deleteCategory(@PathVariable int id)
     {
-        categoryDao.deleteCategory(id);
+        // delete the category by id
     }
 }
