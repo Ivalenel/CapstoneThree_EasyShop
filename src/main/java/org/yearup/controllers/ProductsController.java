@@ -62,6 +62,7 @@ public class ProductsController {
         }
     }
 
+//Bug 2
     @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void updateProduct(@PathVariable int id, @RequestBody Product product) {
