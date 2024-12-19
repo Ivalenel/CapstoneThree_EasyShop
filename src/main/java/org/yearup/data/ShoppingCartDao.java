@@ -1,7 +1,8 @@
 package org.yearup.data;
 
+import org.springframework.stereotype.Repository;
 import org.yearup.models.ShoppingCart;
-
+@Repository
 public interface ShoppingCartDao
 {
     // Retrieve the shopping cart for a user
