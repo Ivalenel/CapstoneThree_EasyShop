@@ -13,17 +13,29 @@ import java.sql.*;
 import java.util.List;
 
 @Component
-public class MySqlShoppingCartDao implements ShoppingCartDao {
-    private final DataSource dataSource;
-    private int userId;
+public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDao
+{
 
-    public MySqlShoppingCartDao(DataSource dataSource) {
-        this.dataSource = dataSource;
+    public MySqlShoppingCartDao(DataSource dataSource)
+    {
+        super(dataSource);
     }
 
-    private Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
+        MySqlDaoBase dataSource = null;
         return dataSource.getConnection();
     }
+
+    @Override
+    public void updateCategory(int categoryId, Category category) {
+
+    }
+
+    @Override
+    public void deleteCategory(int categoryId) {
+
+    }
+
     @Override
     public void update(int categoryId, Category category) {
 
@@ -51,7 +63,6 @@ public class MySqlShoppingCartDao implements ShoppingCartDao {
 
     @Override
     public ShoppingCart getCartByUserId(int userId) {
-        this.userId = userId;
         String query = "SELECT p.product_id, p.name, p.price, p.description, p.color, p.stock, p.image_url, p.featured, sc.quantity " +
                 "FROM shopping_cart sc " +
                 "JOIN products p ON sc.product_id = p.product_id " +

@@ -3,23 +3,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.yearup.data.ProductDao;
 import org.yearup.data.ShoppingCartDao;
 import org.yearup.data.UserDao;
 import org.yearup.models.ShoppingCart;
 import org.yearup.models.User;
 import java.security.Principal;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("cart")
+@CrossOrigin
 public class ShoppingCartController {
     private final ShoppingCartDao shoppingCartDao;
     private final UserDao userDao;
+    private final ProductDao productDao;
 
     @Autowired
-    public ShoppingCartController(ShoppingCartDao shoppingCartDao, UserDao userDao) {
+    public ShoppingCartController(ShoppingCartDao shoppingCartDao, UserDao userDao, ProductDao productDao) {
         this.shoppingCartDao = shoppingCartDao;
         this.userDao = userDao;
+        this.productDao = productDao;
     }
 
     private int getUserIdFromPrincipal(Principal principal) {
@@ -59,4 +63,7 @@ public class ShoppingCartController {
         shoppingCartDao.clearCart(userId);
     }
 
+    public ProductDao getProductDao() {
+        return productDao;
+    }
 }
