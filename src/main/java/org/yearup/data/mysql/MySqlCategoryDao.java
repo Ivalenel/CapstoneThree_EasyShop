@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.yearup.data.CategoryDao;
 import org.yearup.models.Category;
 import org.yearup.models.Product;
+import org.yearup.models.ShoppingCart;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -144,6 +145,11 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public ShoppingCart getByUserId(int userId) {
+        return null;
     }
 
     private Category mapRow(ResultSet row) throws SQLException {

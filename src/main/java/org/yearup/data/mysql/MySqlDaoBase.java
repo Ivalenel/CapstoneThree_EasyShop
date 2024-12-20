@@ -2,6 +2,7 @@ package org.yearup.data.mysql;
 
 import org.yearup.models.Category;
 import org.yearup.models.Product;
+import org.yearup.models.ShoppingCart;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -23,6 +24,7 @@ public abstract class MySqlDaoBase
         return dataSource.getConnection();
     }
 
+
     public abstract void updateCategory(int categoryId, Category category);
 
     public abstract void deleteCategory(int categoryId);
@@ -34,4 +36,6 @@ public abstract class MySqlDaoBase
     public abstract List<Product> search(Integer categoryId, BigDecimal minPrice, BigDecimal maxPrice, String color);
 
     public abstract void delete(int categoryId);
+
+    public abstract ShoppingCart getByUserId(int userId);
 }

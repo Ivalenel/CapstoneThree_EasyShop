@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.yearup.data.UserDao;
 import org.yearup.models.Category;
 import org.yearup.models.Product;
+import org.yearup.models.ShoppingCart;
 import org.yearup.models.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -51,6 +52,11 @@ public class MySqlUserDao extends MySqlDaoBase implements UserDao
     @Override
     public void delete(int categoryId) {
 
+    }
+
+    @Override
+    public ShoppingCart getByUserId(int userId) {
+        return null;
     }
 
 

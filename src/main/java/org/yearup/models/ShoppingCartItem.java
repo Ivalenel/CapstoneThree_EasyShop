@@ -31,15 +31,6 @@ public class ShoppingCartItem
         this.quantity = quantity;
     }
 
-    public BigDecimal getDiscountPercent()
-    {
-        return discountPercent;
-    }
-
-    public void setDiscountPercent(BigDecimal discountPercent)
-    {
-        this.discountPercent = discountPercent;
-    }
 
     @JsonIgnore
     public int getProductId()
@@ -56,8 +47,5 @@ public class ShoppingCartItem
         BigDecimal discountAmount = subTotal.multiply(discountPercent);
 
         return subTotal.subtract(discountAmount);
-    }
-
-    public void setProductId(int productId) {
     }
 }

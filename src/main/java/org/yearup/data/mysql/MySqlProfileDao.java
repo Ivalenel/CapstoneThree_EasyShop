@@ -6,6 +6,7 @@ import org.yearup.models.Category;
 import org.yearup.models.Product;
 import org.yearup.models.Profile;
 import org.yearup.data.ProfileDao;
+import org.yearup.models.ShoppingCart;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
@@ -47,6 +48,11 @@ public class MySqlProfileDao extends MySqlDaoBase implements ProfileDao {
     @Override
     public void delete(int categoryId) {
 
+    }
+
+    @Override
+    public ShoppingCart getByUserId(int userId) {
+        return null;
     }
 
     @Override

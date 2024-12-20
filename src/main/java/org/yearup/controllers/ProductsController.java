@@ -43,8 +43,9 @@ public class ProductsController {
         try {
             var product = productDao.getById(id);
 
-            if (product == null)
+            if (product != null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
 
             return product;
         } catch (Exception ex) {
